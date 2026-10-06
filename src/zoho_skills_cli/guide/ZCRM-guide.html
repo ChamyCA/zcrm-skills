@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZCRM Skills | Help</title>
+<style>
+:root{--bg:#f7f8fa;--panel:#fff;--ink:#1c2430;--mute:#5b6676;--line:#e1e5ec;--brand:#e42527;--brand-d:#b81b1d;--ok:#1a7f4b;--wip:#b26a00;--side:268px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:var(--brand-d)}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em}
+code{background:#eef0f4;padding:.1em .35em;border-radius:4px}
+pre{background:#1c2430;color:#e8ecf2;padding:14px 16px;border-radius:8px;overflow-x:auto;line-height:1.5}
+pre code{background:none;padding:0}
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--side);background:var(--panel);border-right:1px solid var(--line);padding:24px 18px;overflow-y:auto}
+.brand{font-weight:700;font-size:1.05rem;margin:0 0 4px}
+.brand small{display:block;font-weight:400;color:var(--mute);font-size:.8rem}
+.sidebar h3{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:22px 0 6px}
+.sidebar a{display:block;padding:5px 10px;border-radius:6px;color:var(--ink);text-decoration:none;font-size:.93rem}
+.sidebar a:hover{background:#f0f2f6}
+.sidebar a.active{background:#fdecec;color:var(--brand-d);font-weight:600}
+.sidebar a.sub{padding-left:22px;font-size:.88rem;color:var(--mute)}
+.mobile-bar{display:none}
+main{margin-left:var(--side);padding:0 40px 80px;max-width:calc(940px + var(--side))}
+section{padding-top:48px}
+h1{font-size:2.3rem;line-height:1.2;margin:0 0 12px}
+h2{font-size:1.5rem;margin:0 0 12px}
+h3{margin:0 0 6px}
+.hero{padding-top:56px}
+.hero p.lead{font-size:1.15rem;color:var(--mute);max-width:640px}
+.pill{display:inline-block;font-size:.75rem;padding:2px 10px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--mute)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.95rem}
+th{background:#f0f2f6;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--mute)}
+tr:last-child td{border-bottom:0}
+.table-wrap{overflow-x:auto}
+.badge{font-size:.72rem;font-weight:600;padding:2px 9px;border-radius:99px;vertical-align:middle;margin-left:8px}
+.badge.available{background:#e3f4ea;color:var(--ok)}
+.badge.in-progress,.badge.beta{background:#fff1d9;color:var(--wip)}
+.skill dl{display:grid;grid-template-columns:130px 1fr;gap:8px 18px;margin:12px 0 0}
+.skill dt{font-weight:600;color:var(--mute);font-size:.9rem}
+.skill dd{margin:0}
+.skill ul{margin:0;padding-left:18px}
+.callout{border-left:4px solid var(--wip);background:#fff8ea;padding:12px 16px;border-radius:0 8px 8px 0;margin:14px 0}
+.flow{width:100%;height:auto;background:var(--panel);border:1px solid var(--line);border-radius:12px}
+.flow text{font:13px -apple-system,Segoe UI,Roboto,sans-serif;fill:#1c2430}
+.flow .box{fill:#fff;stroke:#c9cfda;stroke-width:1.5}
+.flow .art{fill:#5b6676;font-size:11px}
+.flow .arrow{stroke:#8a94a6;stroke-width:1.5;fill:none}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0}
+summary{cursor:pointer;font-weight:600}
+details p{margin:10px 0 0}
+.changelog-day{border-left:3px solid var(--line);padding-left:16px;margin:18px 0}
+.changelog-day h3{font-size:1rem}
+.hero{position:relative}
+.hero-glow{position:absolute;inset:-20px -40px auto -40px;height:420px;z-index:-1;background:radial-gradient(600px 260px at 20% 20%,rgba(228,37,39,.16),transparent 70%),radial-gradient(520px 240px at 85% 10%,rgba(60,110,230,.14),transparent 70%);filter:blur(6px);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate3d(24px,12px,0)}}
+.hero-title{font-size:3rem;line-height:1.1;letter-spacing:-.02em;margin:14px 0 14px}
+.hero-title em{font-style:normal;background:linear-gradient(90deg,var(--brand),#ff7a3d 60%,#3c6ee6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.term{margin:26px 0 8px;border-radius:14px;background:#12171f;color:#e8ecf2;box-shadow:0 20px 50px rgba(20,30,50,.28);overflow:hidden;border:1px solid #2a3240}
+.term-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#1a212c;border-bottom:1px solid #2a3240}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}
+.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+.term-bar span{margin-left:10px;font-size:.78rem;color:#8a94a6}
+.term-body{padding:20px 22px;min-height:230px;font:14.5px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.chev{color:var(--brand)}
+.cursor{animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.term-think{margin-top:12px;color:#ffb36b;opacity:0;transition:opacity .2s}
+.term-think.on{opacity:1}
+.star{display:inline-block}
+.term-think.spin .star{animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.term-resp{margin-top:10px;color:#cfd6e2;opacity:0;transform:translateY(4px);transition:opacity .4s,transform .4s;white-space:normal}
+.term-resp.on{opacity:1;transform:none}
+.term-resp .acc{color:#7fe3a8}
+.term-resp .src{display:block;margin-top:8px;color:#8a94a6;font-size:.85em}
+.term-progress{height:3px;background:#1a212c}
+.term-progress b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),#ff7a3d)}
+.term-dots{display:flex;gap:8px;margin:12px 0 2px}
+.term-dots button{width:26px;height:6px;border-radius:99px;border:0;padding:0;background:#cfd5df;cursor:pointer}
+.term-dots button.on{background:var(--brand)}
+.term-note{font-size:.8rem;color:var(--mute);margin:4px 0 18px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 14px}
+.cta{display:inline-block;padding:11px 22px;border-radius:99px;background:var(--brand);color:#fff;text-decoration:none;font-weight:600;transition:transform .15s,background .15s}
+.cta:hover{background:var(--brand-d);transform:translateY(-1px)}
+.cta.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.cta.ghost:hover{background:#fff}
+@media(prefers-reduced-motion:reduce){.hero-glow,.cursor,.term-think.spin .star{animation:none}html{scroll-behavior:auto}}
+@media(max-width:860px){.hero-title{font-size:2.1rem}.term-body{font-size:13px;padding:16px;min-height:260px}}
+.tab-list{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:8px 0 12px}
+.tab{font:inherit;font-weight:600;color:var(--mute);background:none;border:0;border-bottom:2px solid transparent;padding:8px 14px;cursor:pointer;margin-bottom:-1px}
+.tab.on{color:var(--brand-d);border-bottom-color:var(--brand)}
+.tab-panel[hidden]{display:none}
+.steps{margin:6px 0;padding-left:22px}
+.code{position:relative;margin:8px 0}
+.code pre{margin:0;padding-right:76px}
+.copy{position:absolute;top:8px;right:8px;font:inherit;font-size:.78rem;color:#e8ecf2;background:#2a3240;border:1px solid #3a4456;border-radius:6px;padding:3px 10px;cursor:pointer}
+.copy:hover{background:#3a4456}
+.note{color:var(--mute);font-size:.9rem;margin:6px 0 0}
+.callout.danger{border-left-color:#c62828;background:#fdecec}
+.chain{font-weight:600}.chain span{background:#fff;border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.pending{background:#fff1d9;border-radius:4px;padding:0 5px}
+footer{margin-top:60px;color:var(--mute);font-size:.85rem}
+@media(max-width:860px){
+  .sidebar{transform:translateX(-100%);transition:transform .2s;z-index:20;box-shadow:2px 0 12px rgba(0,0,0,.15)}
+  .sidebar.open{transform:none}
+  .mobile-bar{display:flex;position:sticky;top:0;z-index:10;align-items:center;gap:12px;background:var(--panel);border-bottom:1px solid var(--line);padding:10px 16px}
+  .mobile-bar button{font:inherit;border:1px solid var(--line);background:#fff;border-radius:6px;padding:4px 12px;cursor:pointer}
+  main{margin-left:0;padding:0 18px 60px}
+  h1{font-size:1.8rem}
+  .skill dl{grid-template-columns:1fr;gap:2px}
+  .skill dt{margin-top:8px}
+}
+</style>
+</head>
+<body>
+<div class="mobile-bar"><button id="menu-btn" aria-expanded="false" aria-controls="sidebar">Menu</button><strong>ZCRM Skills Help</strong></div>
+
+<aside class="sidebar" id="sidebar">
+  <p class="brand">ZCRM Skills<small>Help for pre-sales engineers</small></p>
+  <h3>Overview</h3>
+  <a href="#overview">What it's for</a>
+  <a href="#workflow">How the skills connect</a>
+  <h3>Get started</h3>
+  <a href="#setup">Install and build</a>
+  <a href="#troubleshooting">If something goes wrong</a>
+  <h3>Resources</h3>
+  <a href="#skills">The 7 skills</a>
+  <a class="sub" href="#skill-intake">ZCRM-intake</a>
+  <a class="sub" href="#skill-discovery">ZCRM-discovery</a>
+  <a class="sub" href="#skill-design">ZCRM-design</a>
+  <a class="sub" href="#skill-planner">ZCRM-planner</a>
+  <a class="sub" href="#skill-executor">ZCRM-executor</a>
+  <a class="sub" href="#skill-demo">ZCRM-demo</a>
+  <a class="sub" href="#skill-alignment">ZCRM-alignment</a>
+  <a href="#improve">How the skills get better</a>
+  <a href="#faq">FAQ</a>
+  <a href="#changelog">Change Log</a>
+</aside>
+
+<main>
+<section class="hero" id="overview">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <span class="pill">Internal &middot; pre-sales</span>
+  <h1 class="hero-title">From first call to live demo.<br><em>Seven skills, one chain.</em></h1>
+  <p class="lead">The ZCRM skills run inside Claude Code. Each one hands the next a file it can use, so you can start at whichever stage matches where you are.</p>
+
+  <div class="term" id="term" aria-label="Animated example of a skill running">
+    <div class="term-bar"><i></i><i></i><i></i><span>claude &middot; ZCRM skills</span></div>
+    <div class="term-body" id="term-body">
+      <div class="term-prompt"><span class="chev">&#10095;</span> <span id="term-query">/ZCRM-intake I have a call transcript for Acme Logistics</span><span class="cursor" id="term-cursor" hidden>&#9608;</span></div>
+      <div class="term-think" id="term-think"><span class="star" id="term-star">&#10038;</span> <span id="term-think-text">Done.</span></div>
+      <div class="term-resp" id="term-resp"></div>
+    </div>
+    <div class="term-progress"><b id="term-progress"></b></div>
+  </div>
+  <div class="term-dots" id="term-dots" role="tablist" aria-label="Choose an example"></div>
+  <p class="term-note">Illustrative example with a fictional prospect.</p>
+
+  <div class="hero-cta">
+    <a class="cta" href="#setup">Install in 2 minutes</a>
+    <a class="cta ghost" href="#skills">Browse the 7 skills</a>
+  </div>
+  <p><strong>Last verified:</strong> October 6, 2026 against the skill definitions in this repository.</p>
+
+  <div class="card">
+    <h3>Where do I start?</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>If you have&hellip;</th><th>Run</th></tr></thead>
+      <tbody>
+        <tr><td>A call transcript, email, or notes, but nothing organized yet</td><td><code>/ZCRM-intake</code></td></tr>
+        <tr><td>A prospect who has not told you their needs in CRM terms</td><td><code>/ZCRM-discovery</code></td></tr>
+        <tr><td>Discovery material or a customer brief, ready to design from</td><td><code>/ZCRM-design</code></td></tr>
+        <tr><td>A validated design package (<code>12-handoff-spec.yaml</code>)</td><td><code>/ZCRM-planner</code></td></tr>
+        <tr><td>A validated plan and an approved demo or sandbox org</td><td><code>/ZCRM-executor</code> (beta)</td></tr>
+        <tr><td>A customer brief, a pain case, and a built demo org</td><td><code>/ZCRM-demo</code></td></tr>
+        <tr><td>A need to check that the skills and a prospect's outputs agree</td><td><code>/ZCRM-alignment</code></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="setup">
+  <h2>Get started</h2>
+  <p>You need Claude Code, <a href="https://docs.astral.sh/uv/">uv</a>, <a href="https://nodejs.org">Node.js</a> 20+, and a demo or sandbox Zoho org. Your admin gives you the install line.</p>
+
+  <h3>1. Install</h3>
+  <div class="tabs" data-tabs>
+    <div class="tab-list" role="tablist" aria-label="Install method">
+      <button class="tab on" role="tab" aria-selected="true" data-tab="tab-repo">Repo link</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="tab-wheel">Wheel file</button>
+    </div>
+    <div class="tab-panel on" id="tab-repo" role="tabpanel">
+      <ol class="steps">
+        <li>Open a terminal in your project folder.</li>
+        <li>Paste this:</li>
+      </ol>
+      <div class="code"><button class="copy" type="button">Copy</button>
+<pre><code>uvx --from git+ssh://git@&lt;host&gt;/&lt;owner&gt;/zcrm-skills.git zoho-skills init --here</code></pre></div>
+      <ol class="steps" start="3"><li>Wait for the green "Next Steps" box.</li></ol>
+    </div>
+    <div class="tab-panel" id="tab-wheel" role="tabpanel" hidden>
+      <ol class="steps">
+        <li>Open a terminal in your project folder.</li>
+        <li>Paste this:</li>
+      </ol>
+      <div class="code"><button class="copy" type="button">Copy</button>
+<pre><code>uvx --from ./zoho_skills_cli-&lt;version&gt;-py3-none-any.whl zoho-skills init --here</code></pre></div>
+      <ol class="steps" start="3"><li>Wait for the green "Next Steps" box.</li></ol>
+    </div>
+  </div>
+  <p class="note">Add <code>--dry-run</code> to preview without changing anything.</p>
+
+  <h3>2. Check</h3>
+  <div class="code"><button class="copy" type="button">Copy</button>
+<pre><code>./zcrm-exec doctor</code></pre></div>
+  <p>Look for <code>PASS  Agent protections configured</code>. FAIL? See "If something goes wrong" below.</p>
+
+  <h3>3. Add your tokens</h3>
+  <ol class="steps">
+    <li>Create a Self Client in the Zoho API console.</li>
+    <li>Run the scopes command and paste the result into it.</li>
+    <li>Run the auth command in your own terminal, not the chat.</li>
+    <li>Answer the hidden prompts: client ID, client secret, grant code.</li>
+  </ol>
+  <div class="code"><button class="copy" type="button">Copy</button>
+<pre><code>./zcrm-exec scopes --profile discover
+./zcrm-exec auth init --profile discover --dc US</code></pre></div>
+  <div class="callout danger"><strong>Type tokens only in your own terminal.</strong> Never paste them in the chat. If you did, revoke them in the Zoho API console.</div>
+  <p>After the plan check, run <code>./zcrm-exec scopes --profile build --plan &lt;your plan file&gt;</code>, then repeat both steps with <code>--profile build</code>. When done, revoke both:</p>
+  <div class="code"><button class="copy" type="button">Copy</button>
+<pre><code>./zcrm-exec auth revoke --profile build
+./zcrm-exec auth revoke --profile discover</code></pre></div>
+
+  <h3>4. Build</h3>
+  <p>Open Claude Code in the folder. Type <code>/ZCRM-intake</code> (or <code>/ZCRM-discovery</code>), then follow the chain.</p>
+  <p class="chain"><span>intake</span> &rarr; <span>design</span> &rarr; <span>planner</span> &rarr; <span>executor</span> &rarr; <span>demo</span></p>
+  <div class="callout"><strong>The executor is beta.</strong> Start with one small step in a sandbox org. It shows each step and waits for your yes. It never deletes.</div>
+
+  <h3>Install options</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Option</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td><code>--dry-run</code></td><td>Preview changes, write nothing.</td></tr>
+      <tr><td><code>--no-executor</code></td><td>Skills only, no executor.</td></tr>
+      <tr><td><code>--force</code></td><td>Overwrite skills, fix unsafe settings.</td></tr>
+      <tr><td><code>--include-alignment</code></td><td>Also install the audit skill.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Update</h3>
+  <p>Run the same install command again with <code>--force</code>. Executor files refresh with or without it.</p>
+</section>
+
+<section id="troubleshooting">
+  <h2>If something goes wrong</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Problem</th><th>Fix</th></tr></thead>
+    <tbody>
+      <tr><td><code>zcrm-exec</code> not found</td><td>Run <code>./zcrm-exec</code> from the project folder.</td></tr>
+      <tr><td>Install stopped with exit code 2</td><td>A setting of yours is unsafe. Fix it, or use <code>--force</code>.</td></tr>
+      <tr><td>Node missing or older than 20</td><td>Install current Node LTS, then open a new terminal.</td></tr>
+      <tr><td>Doctor shows FAIL</td><td>Fix Node or re-run the install, then run doctor again.</td></tr>
+      <tr><td>Build auth refused</td><td>Confirm the plan check in chat first, then retry.</td></tr>
+      <tr><td>Grant code expired</td><td>Create a new grant code and run the auth command again.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="workflow">
+  <h2>How the skills connect</h2>
+  <p>Each skill writes files under <code>output/&lt;prospect-slug&gt;/</code> that the next skill reads. The skills are independent entry points, not mandatory phases.</p>
+  <svg class="flow" viewBox="0 0 900 330" role="img" aria-label="Workflow: intake or discovery lead to design, then planner, executor, and demo. Alignment audits all.">
+    <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8a94a6"/></marker></defs>
+    <rect class="box" x="20" y="30" width="150" height="50" rx="8"/><text x="95" y="60" text-anchor="middle">ZCRM-intake</text>
+    <rect class="box" x="20" y="130" width="150" height="50" rx="8"/><text x="95" y="160" text-anchor="middle">ZCRM-discovery</text>
+    <text class="art" x="95" y="200" text-anchor="middle">customer-brief.md</text>
+    <rect class="box" x="250" y="80" width="150" height="50" rx="8"/><text x="325" y="110" text-anchor="middle">ZCRM-design</text>
+    <text class="art" x="325" y="150" text-anchor="middle">12-handoff-spec.yaml</text>
+    <rect class="box" x="470" y="80" width="150" height="50" rx="8"/><text x="545" y="110" text-anchor="middle">ZCRM-planner</text>
+    <text class="art" x="545" y="150" text-anchor="middle">14-implementation-plan.md</text>
+    <rect class="box" x="690" y="80" width="190" height="50" rx="8"/><text x="785" y="110" text-anchor="middle">ZCRM-executor (beta)</text>
+    <text class="art" x="785" y="150" text-anchor="middle">built demo org + reports</text>
+    <rect class="box" x="470" y="215" width="410" height="50" rx="8"/><text x="675" y="245" text-anchor="middle">ZCRM-demo: brief + pain case + built demo org</text>
+    <text class="art" x="675" y="285" text-anchor="middle">demo-plan + demo-script</text>
+    <path class="arrow" marker-end="url(#ah)" d="M170,55 L250,95"/>
+    <path class="arrow" marker-end="url(#ah)" d="M170,155 L250,115"/>
+    <path class="arrow" marker-end="url(#ah)" d="M400,105 L470,105"/>
+    <path class="arrow" marker-end="url(#ah)" d="M620,105 L690,105"/>
+    <path class="arrow" marker-end="url(#ah)" d="M785,170 L785,215"/>
+    <path class="arrow" marker-end="url(#ah)" d="M95,205 L95,240 L470,240"/>
+    <text x="20" y="318" class="art">ZCRM-alignment audits the whole chain and a prospect's output folder at any point.</text>
+  </svg>
+</section>
+
+<section id="skills">
+  <h2>The 7 skills</h2>
+  <p>Invoke any skill by typing its name in Claude Code, followed by what you want. Every skill asks questions as multiple choice by default and assumes Zoho CRM Enterprise unless you say otherwise (all except <code>ZCRM-alignment</code>).</p>
+
+  <article class="card skill" id="skill-intake" data-skill="ZCRM-intake" data-status="available">
+    <h3>ZCRM-intake <span class="badge available">Available</span></h3>
+    <dl>
+      <dt>Purpose</dt><dd>A guided front door. It asks for the prospect name and discovery material, then hands everything to design. It does no design itself.</dd>
+      <dt>When to use</dt><dd>You want to design a CRM for a prospect but have not organized your discovery material yet, for example "I have a call transcript for Acme".</dd>
+      <dt>Inputs</dt><dd><ul><li>Prospect name</li><li>At least one of: call transcript or notes, an email, a requirements document, website excerpt</li></ul></dd>
+      <dt>Outputs</dt><dd>Your material, passed unchanged to <code>ZCRM-design</code>. It then relays in plain language what the design skill produced or still needs.</dd>
+      <dt>Invoke</dt><dd><code>/ZCRM-intake I have a call transcript for Acme Logistics</code></dd>
+      <dt>Next step</dt><dd><a href="#skill-design">ZCRM-design</a></dd>
+      <dt>Source</dt><dd><code>.claude/skills/ZCRM-intake/SKILL.md</code></dd>
+    </dl>
+  </article>
+
+  <article class="card skill" id="skill-discovery" data-skill="ZCRM-discovery" data-status="available">
+    <h3>ZCRM-discovery <span class="badge available">Available</span></h3>
+    <dl>
+      <dt>Purpose</dt><dd>Interviews a prospect who is new to CRM, one plain-business-language question at a time, and turns the answers into a structured brief. Every answer is tagged with where it came from. It will not stop until it has asked about the prospect's industry and their biggest pains.</dd>
+      <dt>When to use</dt><dd>You want to run or continue a discovery interview, or <code>customer-brief.md</code> needs to be created or updated.</dd>
+      <dt>Inputs</dt><dd><ul><li>Prospect name (used for the output folder)</li><li>The prospect's answers, collected across sessions you can pause and resume</li><li>Optional: website or documents, which are presented back for the prospect to confirm</li></ul></dd>
+      <dt>Outputs</dt><dd><code>output/&lt;prospect-slug&gt;/customer-brief.md</code>, plus a session-state file that lets the interview resume. The brief carries <strong>Industry:</strong> and <strong>Pain:</strong> markers.</dd>
+      <dt>Invoke</dt><dd><code>/ZCRM-discovery Start a discovery interview for Acme Logistics</code></dd>
+      <dt>Next step</dt><dd><a href="#skill-design">ZCRM-design</a> and <a href="#skill-demo">ZCRM-demo</a> use the brief</dd>
+      <dt>Source</dt><dd><code>.claude/skills/ZCRM-discovery/SKILL.md</code></dd>
+    </dl>
+  </article>
+
+  <article class="card skill" id="skill-design" data-skill="ZCRM-design" data-status="available">
+    <h3>ZCRM-design <span class="badge available">Available</span></h3>
+    <dl>
+      <dt>Purpose</dt><dd>Turns discovery material into a traceable, validated Zoho CRM design package: data model, pipelines, blueprints, automation, and persona dashboards. Each element cites the requirement behind it.</dd>
+      <dt>When to use</dt><dd>You are designing a CRM solution for a specific prospect, before any demo org is built.</dd>
+      <dt>Inputs</dt><dd><ul><li>Discovery material: calls, notes, emails, documents, website, web research</li><li>Blocking inputs (industry, top pains, sales process); the skill asks if they are missing</li></ul></dd>
+      <dt>Outputs</dt><dd>A numbered set of documents in <code>output/&lt;prospect-slug&gt;/</code>, ending with <code>12-handoff-spec.yaml</code>. It never writes to a live CRM org.</dd>
+      <dt>Invoke</dt><dd><code>/ZCRM-design Design the CRM for Acme Logistics</code></dd>
+      <dt>Next step</dt><dd><a href="#skill-planner">ZCRM-planner</a></dd>
+      <dt>Source</dt><dd><code>.claude/skills/ZCRM-design/SKILL.md</code></dd>
+    </dl>
+  </article>
+
+  <article class="card skill" id="skill-planner" data-skill="ZCRM-planner" data-status="available">
+    <h3>ZCRM-planner <span class="badge available">Available</span></h3>
+    <dl>
+      <dt>Purpose</dt><dd>Turns a validated design package into one credential-free, dependency-ordered plan for building it with the Zoho CRM API. The plan is discovery-first and requires explicit confirmation before each write.</dd>
+      <dt>When to use</dt><dd>You have a validated design package and want a plan to build it in a real demo org.</dd>
+      <dt>Inputs</dt><dd><code>output/&lt;prospect-slug&gt;/12-handoff-spec.yaml</code>. The skill refuses to continue unless its validation shows zero blocking failures.</dd>
+      <dt>Outputs</dt><dd><code>output/&lt;prospect-slug&gt;/14-implementation-plan.md</code>. The skill never calls Zoho itself.</dd>
+      <dt>Invoke</dt><dd><code>/ZCRM-planner Generate the implementation plan for acme-logistics</code></dd>
+      <dt>Next step</dt><dd><a href="#skill-executor">ZCRM-executor</a>, then <a href="#skill-demo">ZCRM-demo</a></dd>
+      <dt>Source</dt><dd><code>.claude/skills/ZCRM-planner/SKILL.md</code></dd>
+    </dl>
+  </article>
+
+  <article class="card skill" id="skill-executor" data-skill="ZCRM-executor" data-status="beta">
+    <h3>ZCRM-executor <span class="badge beta">Beta</span></h3>
+    <dl>
+      <dt>Purpose</dt><dd>Builds a validated plan in an approved demo or sandbox org one chat-confirmed step at a time. It acts as a senior Zoho API engineer: it composes each call from the plan and the Zoho documentation, shows you the exact request, and runs it only after you confirm in chat. Credentials never enter the conversation.</dd>
+      <dt>When to use</dt><dd>You have a validated plan and want it built, resumed, verified, or reported on in a demo or sandbox org.</dd>
+      <dt>Inputs</dt><dd><ul><li><code>14-implementation-plan.md</code> and <code>12-handoff-spec.yaml</code></li><li>An approved target org definition</li><li>Credentials that you load yourself in your own terminal</li></ul></dd>
+      <dt>Outputs</dt><dd>Written by report generation under <code>output/&lt;prospect-slug&gt;/</code>: <code>run-ledger.jsonl</code>, <code>execution-report.md</code>, <code>manual-steps-checklist.md</code>, <code>api-upgrade-proposals.md</code>, <code>rollback-checklist.md</code>.</dd>
+      <dt>Invoke</dt><dd><code>/ZCRM-executor status</code> to check readiness, or give a prospect slug.</dd>
+      <dt>Next step</dt><dd><a href="#skill-demo">ZCRM-demo</a></dd>
+      <dt>Source</dt><dd><code>.claude/skills/ZCRM-executor/SKILL.md</code>, <code>specs/007-crm-build-executor/tasks.md</code></dd>
+    </dl>
+    <div class="callout">
+      <strong>What works today.</strong> Plan intake, the target-org guard, credential setup (<code>auth init</code>, <code>doctor</code>, scope listing), read-only discovery with a reconciliation report you confirm, the guarded write path (preview, execute, verify, skip), manual-step recording, API upgrade proposals, and report generation.<br>
+      <strong>Not built yet.</strong> Live validation. Nothing has run against a live org yet; everything is tested on a mock server only. For the first live run, build one small step in a sandbox org.<br>
+      <strong>Safety rules.</strong> You confirm each write in chat against the exact preview and request hash. That confirmation is prompt-level, not terminal-enforced, and is accepted only for internal demo or sandbox orgs. The code enforces the target-org and scope guards, the request-hash match, a read-back check, and a secret-free log. You enter tokens in your own terminal, never in chat. There is no delete tool; rollback is a manual checklist. Sample-data seeding is out of scope in this version.
+    </div>
+  </article>
+
+  <article class="card skill" id="skill-demo" data-skill="ZCRM-demo" data-status="available">
+    <h3>ZCRM-demo <span class="badge available">Available</span></h3>
+    <dl>
+      <dt>Purpose</dt><dd>Builds a truthful, prospect-specific demo package. Each scene links a real customer pain to a real org capability, a real screen, and a business outcome. It produces a draft for you to review; you deliver it.</dd>
+      <dt>When to use</dt><dd>You want a demo plan or script for a specific prospect, against a demo org you have already built.</dd>
+      <dt>Inputs</dt><dd><ul><li>Customer brief</li><li>Customer detailed pain case</li><li>Read access to the Zoho CRM demo org through the Zoho CRM MCP tools</li></ul></dd>
+      <dt>Outputs</dt><dd>In <code>output/&lt;prospect-slug&gt;/</code>: <code>org-model.md</code>, <code>org-snapshot.json</code>, <code>customer-profile.md</code>, <code>coverage-matrix.md</code>, <code>demo-plan.md</code> and <code>.html</code>, <code>demo-script.md</code>, <code>gaps-and-risks.md</code>, <code>summary.md</code>.</dd>
+      <dt>Invoke</dt><dd><code>/ZCRM-demo Build the demo plan for Acme Logistics</code></dd>
+      <dt>Next step</dt><dd>You review and deliver the demo. The skill never presents to a prospect.</dd>
+      <dt>Source</dt><dd><code>.claude/skills/ZCRM-demo/SKILL.md</code></dd>
+    </dl>
+  </article>
+
+  <article class="card skill" id="skill-alignment" data-skill="ZCRM-alignment" data-status="available">
+    <h3>ZCRM-alignment <span class="badge available">Available</span></h3>
+    <dl>
+      <dt>Purpose</dt><dd>Audits the skill chain and a prospect's outputs for gaps between what each skill promises and does. It flags gaps by severity and fixes the safe ones.</dd>
+      <dt>When to use</dt><dd>You want to check, align, or fix gaps across the skills, their handoffs, or a prospect's output folder. Run it at any point.</dd>
+      <dt>Inputs</dt><dd>Optional: a skill name, a prospect slug (<code>output/slug</code>), or <code>report-only</code>.</dd>
+      <dt>Outputs</dt><dd>A report with findings by severity, fixes applied, decisions needed, and chain health. With <code>report-only</code> it edits nothing; otherwise it asks before any contract or prospect-content change.</dd>
+      <dt>Invoke</dt><dd><code>/ZCRM-alignment report-only</code> or <code>/ZCRM-alignment acme-logistics</code></dd>
+      <dt>Next step</dt><dd>None. It audits the other skills.</dd>
+      <dt>Source</dt><dd><code>.claude/skills/ZCRM-alignment/SKILL.md</code></dd>
+    </dl>
+  </article>
+</section>
+
+<section id="improve">
+  <h2>How the skills get better</h2>
+  <p>At the end of a build, each skill writes anonymized lessons to its file in <code>lessons/</code>. A maintainer reviews them with <code>/ZCRM-alignment lessons</code> before anything changes.</p>
+</section>
+
+<section id="faq">
+  <h2>FAQ</h2>
+  <details><summary>What does it cost?</summary><p>Pricing and licensing are not covered on this page. Claude Code usage follows your team's plan, so check with your administrator. [HUMAN REVIEW]</p></details>
+  <details><summary>What data can the skills access?</summary><p>They read what you give them (transcripts, notes, documents) and the files they wrote earlier. <code>ZCRM-demo</code> and the executor can read a Zoho CRM demo org through the connected tools. Use demo or sandbox orgs only, and never copy Corp data into them.</p></details>
+  <details><summary>Where are the outputs saved?</summary><p>In <code>output/&lt;prospect-slug&gt;/</code> in your project. The folder is git-ignored, so prospect material stays out of the repository.</p></details>
+  <details><summary>Will a skill change my live CRM?</summary><p>Only the executor can write, and only to an approved demo or sandbox org, one step at a time, after you confirm that exact step in chat. The confirmation is prompt-level, and the executor is beta: it has not yet run against a live org. Intake, discovery, design, planner, and alignment never call Zoho to write. <code>ZCRM-demo</code> is read-only by default and needs your explicit "yes" for any specific write.</p></details>
+  <details><summary>What if the output looks wrong?</summary><p>Run <code>/ZCRM-alignment report-only</code> to look for gaps between the skills and the files. Check the source tags on claims: facts are tagged by origin, and anything unverified is labeled. Do not present unverified, commercial, or competitor claims to a prospect.</p></details>
+  <details><summary>Do the skills ever see my credentials?</summary><p>No, credentials stay in your terminal, never the chat. If one appears there, revoke it.</p></details>
+  <details><summary>What are the lessons files?</summary><p>Every skill ends with a "Capture lessons (close-out)" step that writes anonymized lessons to <code>lessons/&lt;skill&gt;.md</code>. Run <code>/ZCRM-alignment lessons</code> to review them; nothing is promoted into a skill without your confirmation.</p></details>
+  <details><summary>Who do I contact?</summary><p>Contact: <span class="pending" data-pending="contact">[owner to add before publishing]</span></p></details>
+</section>
+
+<section id="changelog">
+  <h2>Change Log</h2>
+  <section class="changelog-day" id="changelog-2026-10-06">
+    <h3>October 6, 2026</h3>
+    <ul>
+      <li><strong>Help page:</strong> setup is now one short Get started section with tabs and copy buttons.</li>
+      <li><strong>Help page:</strong> new plain-language guide to install, check, add tokens, first build, update, and troubleshooting, plus how the skills get better. It now covers the executor install and the one-command installer.</li>
+    </ul>
+  </section>
+  <section class="changelog-day" id="changelog-2026-10-05">
+    <h3>October 5, 2026</h3>
+    <ul>
+      <li><strong>ZCRM-executor:</strong> now Beta. Chat-confirmed write steps, manual-step recording, upgrade proposals, and the five report files are built; tested on a mock server only, not yet run against a live org.</li>
+      <li><strong>ZCRM-discovery:</strong> asks industry and pain questions before stopping. <strong>All skills:</strong> end with a lessons close-out step; <code>/ZCRM-alignment lessons</code> reviews them.</li>
+      <li><strong>ZCRM-executor:</strong> skill added; plan intake gate and target-org guard.</li>
+      <li><strong>All skills:</strong> ask multiple-choice questions by default and assume Zoho CRM Enterprise unless told otherwise.</li>
+      <li><strong>All skills:</strong> renamed to the <code>ZCRM-</code> prefix; <strong>ZCRM-alignment</strong> added.</li>
+    </ul>
+  </section>
+  <section class="changelog-day" id="changelog-2026-10-02">
+    <h3>October 2, 2026</h3>
+    <ul><li><strong>ZCRM-planner</strong> and the remaining pre-sales skills added, with the toolkit README.</li></ul>
+  </section>
+  <section class="changelog-day" id="changelog-2026-10-01">
+    <h3>October 1, 2026</h3>
+    <ul><li><strong>ZCRM-discovery:</strong> first version of the discovery interviewer.</li></ul>
+  </section>
+</section>
+
+<footer>Source of truth: each skill's <code>SKILL.md</code> in <code>.claude/skills/</code> and the toolkit README. Last verified October 6, 2026.</footer>
+</main>
+
+<script>
+(function(){
+  var scenes=[
+    {q:"/ZCRM-intake I have a call transcript for Acme Logistics",t:"Organizing your material",
+     r:'Got the transcript. Handing it to <span class="acc">ZCRM-design</span> unchanged so every claim keeps its source.',s:"Source: ZCRM-intake/SKILL.md"},
+    {q:"/ZCRM-planner Generate the implementation plan for acme-logistics",t:"Checking the handoff spec",
+     r:'Validation shows <span class="acc">0 blocking failures</span>. Writing <span class="acc">14-implementation-plan.md</span> with a confirmation step before every write.',s:"Source: ZCRM-planner/SKILL.md"},
+    {q:"/ZCRM-alignment report-only",t:"Auditing the skill chain",
+     r:'Findings grouped by severity: <span class="acc">CRITICAL, HIGH, MEDIUM, LOW</span>. Nothing is edited in report-only mode.',s:"Source: ZCRM-alignment/SKILL.md"}
+  ];
+  var q=document.getElementById('term-query'),cur=document.getElementById('term-cursor'),
+      th=document.getElementById('term-think'),tt=document.getElementById('term-think-text'),
+      rs=document.getElementById('term-resp'),pg=document.getElementById('term-progress'),
+      dots=document.getElementById('term-dots'),reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var idx=0,timers=[],btns=[];
+  scenes.forEach(function(_,i){var b=document.createElement('button');b.setAttribute('aria-label','Example '+(i+1));
+    b.addEventListener('click',function(){play(i)});dots.appendChild(b);btns.push(b)});
+  function later(fn,ms){timers.push(setTimeout(fn,ms))}
+  function show(s){q.textContent=s.q;tt.textContent='Done.';th.className='term-think on';
+    rs.innerHTML=s.r+'<span class="src">'+s.s+'</span>';rs.className='term-resp on';cur.hidden=true}
+  function play(i){
+    timers.forEach(clearTimeout);timers=[];idx=i;var s=scenes[i];
+    btns.forEach(function(b,k){b.className=k===i?'on':''});
+    pg.style.transition='none';pg.style.width='0';
+    if(reduce){show(s);pg.style.width='100%';return}
+    q.textContent='';cur.hidden=false;th.className='term-think';rs.className='term-resp';
+    var n=0;(function type(){
+      if(n<=s.q.length){q.textContent=s.q.slice(0,n++);later(type,28)}
+      else{cur.hidden=true;th.className='term-think on spin';tt.textContent=s.t+'…';
+        later(function(){th.className='term-think on';tt.textContent='Done.';
+          rs.innerHTML=s.r+'<span class="src">'+s.s+'</span>';rs.className='term-resp on';
+          pg.style.transition='width 5000ms linear';pg.style.width='100%';
+          later(function(){play((i+1)%scenes.length)},5400)},1300)}
+    })();
+  }
+  play(0);
+})();
+(function(){
+  document.querySelectorAll('[data-tabs]').forEach(function(box){
+    var tabs=box.querySelectorAll('.tab'),panels=box.querySelectorAll('.tab-panel');
+    tabs.forEach(function(t){t.addEventListener('click',function(){
+      tabs.forEach(function(x){var on=x===t;x.classList.toggle('on',on);x.setAttribute('aria-selected',on)});
+      panels.forEach(function(p){var on=p.id===t.getAttribute('data-tab');p.classList.toggle('on',on);p.hidden=!on});
+    })});
+  });
+  document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){
+    var txt=b.parentNode.querySelector('code').textContent;
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){})}
+    else{var a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a)}
+  })});
+})();
+(function(){
+  var sb=document.getElementById('sidebar'),btn=document.getElementById('menu-btn');
+  btn.addEventListener('click',function(){var o=sb.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  sb.addEventListener('click',function(e){if(e.target.tagName==='A'){sb.classList.remove('open');btn.setAttribute('aria-expanded',false)}});
+  var links=[].slice.call(sb.querySelectorAll('a')),map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  var ids=Object.keys(map).map(function(i){return document.getElementById(i)}).filter(Boolean);
+  function update(){
+    var cur=ids[0];
+    ids.forEach(function(el){if(el.getBoundingClientRect().top<=120)cur=el});
+    links.forEach(function(a){a.classList.remove('active')});
+    if(cur&&map[cur.id])map[cur.id].classList.add('active');
+  }
+  window.addEventListener('scroll',update,{passive:true});update();
+})();
+</script>
+</body>
+</html>

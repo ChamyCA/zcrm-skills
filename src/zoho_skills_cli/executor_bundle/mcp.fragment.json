@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "zcrm-exec": {
+      "command": "node",
+      "args": [".zcrm-exec/mcp-server.mjs"],
+      "env": { "ZCRM_EXEC_RUN_DIR": ".zcrm-exec/runs/default" }
+    }
+  }
+}

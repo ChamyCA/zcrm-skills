@@ -1,0 +1,46 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "filesystem": { "denyRead": ["~/.config/zcrm-exec"] }
+  },
+  "permissions": {
+    "allow": [
+      "mcp__zcrm-exec__validate_plan",
+      "mcp__zcrm-exec__check_target",
+      "mcp__zcrm-exec__discover",
+      "mcp__zcrm-exec__list_steps",
+      "mcp__zcrm-exec__read_request"
+    ],
+    "ask": [
+      "mcp__zcrm-exec__execute_step",
+      "mcp__zcrm-exec__record_manual_step",
+      "mcp__zcrm-exec__generate_reports",
+      "mcp__zcrm-exec__confirm_reconciliation",
+      "mcp__zcrm-exec__propose_upgrades",
+      "mcp__zcrm-exec__record_upgrade_decision",
+      "mcp__zcrm-exec__skip_step"
+    ],
+    "deny": [
+      "Read(~/.config/zcrm-exec/**)",
+      "Bash(env)",
+      "Bash(env *)",
+      "Bash(printenv *)",
+      "Bash(security *)",
+      "Bash(zcrm-exec auth *)",
+      "Bash(./zcrm-exec auth *)",
+      "Bash(node .zcrm-exec/cli.mjs auth *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.zcrm-exec/guard-secrets.mjs\"" }
+        ]
+      }
+    ]
+  }
+}

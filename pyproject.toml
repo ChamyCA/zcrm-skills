@@ -1,0 +1,25 @@
+[project]
+name = "zoho-skills-cli"
+version = "0.2.0"
+description = "Install Zoho CRM pre-sales skills (intake, discovery, design, planner, executor, demo, alignment) into a project for use with Claude Code and other coding agents."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "typer>=0.12.0",
+    "rich>=13.7.0",
+]
+
+[project.scripts]
+zoho-skills = "zoho_skills_cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/zoho_skills_cli"]
+artifacts = ["src/zoho_skills_cli/executor_bundle/**", "src/zoho_skills_cli/docs/**", "src/zoho_skills_cli/guide/**", "src/zoho_skills_cli/skills/**"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/zoho_skills_cli", "README.md", "pyproject.toml"]
+artifacts = ["src/zoho_skills_cli/executor_bundle/**", "src/zoho_skills_cli/docs/**", "src/zoho_skills_cli/guide/**", "src/zoho_skills_cli/skills/**"]
